@@ -28,10 +28,7 @@ describe('calculatorReducer', () => {
       actionCreators.onExpressionAppend(2),
       actionCreators.onExpressionAppend(3),
       actionCreators.onExpressionAppend(9)
-    ].reduce((previous, next) => {
-      return calculatorReducer(previous, next);
-    }, initialState);
-
+    ].reduce(calculatorReducer, initialState);
     expect(nextState.expression).to.equal('239');
   });
 
@@ -46,10 +43,7 @@ describe('calculatorReducer', () => {
       actionCreators.onExpressionAppend(1),
       actionCreators.onExpressionAppend(0),
       actionCreators.calculateExpression()
-    ].reduce((previous, next) => {
-      return calculatorReducer(previous, next); 
-    }, initialState);
-
+    ].reduce(calculatorReducer, initialState);
     expect(nextState.value).to.equal('249.00');
   });
 });
