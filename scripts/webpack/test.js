@@ -6,7 +6,7 @@ const { HOST, TEST_PORT } = process.env;
 
 const compiler = webpack(config);
 
-console.info('Testing server starting. Please wait...');
+console.info('Testing server starting. Please wait...', HOST, TEST_PORT);
 
 const server = new WebpackDevServer(compiler, {
 
