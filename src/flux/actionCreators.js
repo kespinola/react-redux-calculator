@@ -19,12 +19,6 @@ export function calculateExpression() {
   };
 }
 
-export function onEqual() {
-  return {
-    type: actionTypes.ON_EQUAL 
-  };
-}
-
 export function resetCalculator() {
   return {
     type: actionTypes.RESET_CALCULATOR 
