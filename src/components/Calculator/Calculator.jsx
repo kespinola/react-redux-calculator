@@ -2,35 +2,45 @@ import React, { PropTypes } from 'react'
 import styles from './calculator.css';
 import Key from './../Key';
 
-const Calculator = props => {
+const Calculator = ({ incrementDisplay, changeOperator, display }) => {
   return (
       <article className={styles.wrapper}>
-        <input className={styles.input} />
+        <input className={styles.input} readOnly value={display} />
         <section className={styles.key_pad}>
-          <Key>7</Key>
-          <Key>8</Key>
-          <Key>9</Key>
-          <Key>÷</Key>
-          <Key>%</Key>
-          <Key>4</Key>
-          <Key>5</Key>
-          <Key>6</Key>
-          <Key>x</Key>
-          <Key>1/x</Key>
-          <Key>1</Key>
-          <Key>2</Key>
-          <Key>3</Key>
-          <Key>-</Key>
+          <Key onClick={incrementDisplay} value="7" />
+          <Key onClick={incrementDisplay} value="8" />
+          <Key onClick={incrementDisplay} value="9" />
+          <Key onClick={changeOperator} value="÷" />
+          <Key value="%" />
+          <Key onClick={incrementDisplay} value="4" />
+          <Key onClick={incrementDisplay} value="5" />
+          <Key onClick={incrementDisplay} value="6" />
+          <Key onClick={changeOperator} value="x" />
+          <Key value="1/x" />
+          <Key onClick={incrementDisplay} value="1" />
+          <Key onClick={incrementDisplay} value="2" />
+          <Key onClick={incrementDisplay} value="3" />
+          <Key onClick={changeOperator} value="-" />
           <div className={styles.equal_key_wrap}>
-            <Key type="equal_key">=</Key>
+            <Key type="equal_key" value="=" />
           </div>
-          <Key>0</Key>
-          <Key>.</Key>
-          <Key type="clear_key">clear</Key>
-          <Key>+</Key>
+          <Key onClick={incrementDisplay} value="0" />
+          <Key onClick={incrementDisplay} value="." />
+          <Key type="clear_key" value="clear" />
+          <Key onClick={changeOperator} value="+" />
         </section>
       </article>
   );
+};
+
+Calculator.propTypes = {
+  incrementDisplay: PropTypes.func,
+  display: PropTypes.string,
+};
+
+Calculator.defaultProps = {
+  updateResult: () => {},
+  display: '0',
 };
 
 export default Calculator;
